@@ -130,4 +130,52 @@ def weather_advice():
 
 
 # Call the function
-weather_advice()
+# weather_advice()
+
+# Exercise 5: What's the Season?
+#
+# Write a Python function named `determine_season` that figures out the season based on the entered date.
+#
+# Requirements:
+# - The function should first prompt the user to enter the month (as three characters): "Enter the month of the year (Jan - Dec):"
+# - Then, the function should prompt the user to enter the day of the month: "Enter the day of the month:"
+# - Determine the current season based on the date:
+#      - Dec 21 - Mar 19: Winter
+#      - Mar 20 - Jun 20: Spring
+#      - Jun 21 - Sep 21: Summer
+#      - Sep 22 - Dec 20: Fall
+# - Print the season for the entered date in the format: "<Mmm> <dd> is in <season>."
+#
+# Hints:
+# - Use 'in' to check if a string is in a list or tuple.
+# - Adjust the season based on the day of the month when needed.
+# - Ensure to validate input formats and handle unexpected inputs gracefully.
+
+def determine_season():
+    # Your control flow logic goes here
+    mmm = input('Enter the month of the year following this format (Jan - Dec): ').capitalize()
+    dd = int(input ('Enter the date of the month in digits: '))
+    
+    if mmm not in ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']:
+        print('Please enter a valid month')
+        return
+    if not 1 <= dd <=31:
+        print('Please enter a valid date between 1 and 31.')
+        return
+        
+    if (mmm == 'Dec' and dd >= 21) or (mmm == 'Mar' and dd <= 19) or mmm in ('Jan', 'Feb'):
+        season = 'Winter'
+    elif (mmm == 'Mar' and dd >= 20) or (mmm == 'Jun' and dd <= 20) or mmm in ('Apr', 'May'):
+        season = 'Spring'
+    elif (mmm == 'Jun' and dd >= 21) or (mmm == 'Sep' and dd <= 21) or mmm in ('Jul', 'Aug'):
+        season = 'Summer'
+    elif (mmm == 'Sep' and dd >= 22) or (mmm == 'Dec' and dd <= 20) or mmm in ('Oct', 'Nov'):
+        season = 'Fall'
+    else:
+        print('The date you entered is not valid.')
+        return
+    
+    print(f'{mmm} {dd} is in {season}.')
+        
+# Call the function
+determine_season()
